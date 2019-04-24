@@ -1,0 +1,2904 @@
+{
+	"info": {
+		"_postman_id": "f295aac4-82ea-4654-810e-222ae6ead1b2",
+		"name": "F5 Toolchain Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 - BIG-IP Authentication",
+			"item": [
+				{
+					"name": "Set BIG-IP Authentication Token - LTM1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "897324e4-a182-4521-b81d-e5b069c7ca62",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"TOKEN\", jsonData.token.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\",\n    \"loginProviderName\":\"tmos\"\n}"
+						},
+						"url": {
+							"raw": "https://343f36bc-6a73-400a-b99d-3cc6498ef4df.access.udf.f5.com/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"343f36bc-6a73-400a-b99d-3cc6498ef4df",
+								"access",
+								"udf",
+								"f5",
+								"com"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set BIG-IP Authentication Token - LTM2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "897324e4-a182-4521-b81d-e5b069c7ca62",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"TOKEN\", jsonData.token.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\",\n    \"loginProviderName\":\"tmos\"\n}"
+						},
+						"url": {
+							"raw": "https://343f36bc-6a73-400a-b99d-3cc6498ef4df.access.udf.f5.com/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"343f36bc-6a73-400a-b99d-3cc6498ef4df",
+								"access",
+								"udf",
+								"f5",
+								"com"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set BIG-IP Authentication Token - GTM",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "897324e4-a182-4521-b81d-e5b069c7ca62",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"TOKEN\", jsonData.token.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\",\n    \"loginProviderName\":\"tmos\"\n}"
+						},
+						"url": {
+							"raw": "https://343f36bc-6a73-400a-b99d-3cc6498ef4df.access.udf.f5.com/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"343f36bc-6a73-400a-b99d-3cc6498ef4df",
+								"access",
+								"udf",
+								"f5",
+								"com"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token Timeout - LTM1",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timeout\":\"36000\"\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/authz/tokens/{{TOKEN}}",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{TOKEN}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token Timeout - LTM2",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timeout\":\"36000\"\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/authz/tokens/{{TOKEN}}",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{TOKEN}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token Timeout - GTM",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timeout\":\"36000\"\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/authz/tokens/{{TOKEN}}",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{TOKEN}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Authentication Token - LTM1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/tm/ltm",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Authentication Token - LTM2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/tm/ltm",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Authentication Token - GTM",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/tm/ltm",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c6bb1c3d-4cc0-4737-be05-c48e3daff14a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "88e5defa-e437-453c-9454-4b5795fbd7c1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "1 - BIG-IQ Authentication",
+			"item": [
+				{
+					"name": "Set BIG-IQ Authentication Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "897324e4-a182-4521-b81d-e5b069c7ca62",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"IQTOKEN\", jsonData.token.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"purple123\",\r\n  \"loginProviderName\": \"tmos\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2 - DO - BIG-IP",
+			"item": [
+				{
+					"name": "Clustered declaration - LTM1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schemaVersion\": \"1.0.0\",\n    \"class\": \"Device\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"hostname\": \"bigipa.example.com\",\n        \"myLicense\": {\n            \"class\": \"License\",\n            \"licenseType\": \"regKey\",\n            \"regKey\": \"AAAAA-BBBBB-CCCCC-DDDDD-EEEEEEE\"\n        },\n        \"myDns\": {\n            \"class\": \"DNS\",\n            \"nameServers\": [\n                \"8.8.8.8\"\n            ],\n            \"search\": [\n                \"lab.local\"\n            ]\n        },\n        \"myNtp\": {\n            \"class\": \"NTP\",\n            \"servers\": [\n                \"0.pool.ntp.org\",\n                \"1.pool.ntp.org\"\n            ],\n            \"timezone\": \"UTC\"\n        },\n        \"root\": {\n            \"class\": \"User\",\n            \"userType\": \"root\",\n            \"oldPassword\": \"default\",\n            \"newPassword\": \"default\"\n        },\n        \"admin\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"admin\",\n            \"shell\": \"bash\"\n        },\n        \"anotherUser\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"foobar\",\n            \"partitionAccess\": {\n                \"Common\": {\n                    \"role\": \"guest\"\n                }\n            }\n        },\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\",\n            \"afm\": \"nominal\"\n        },\n        \"internal\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4093,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.2\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"internal-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.2.2.10/24\",\n            \"vlan\": \"internal\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"external\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4094,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.1\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"external-localself\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.1.1.10/24\",\n            \"vlan\": \"external\",\n            \"allowService\": \"none\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"external-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.1.1.20/24\",\n            \"vlan\": \"external\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-1\"\n        },\n        \"default\": {\n            \"class\": \"Route\",\n            \"gw\": \"10.1.1.1\",\n            \"network\": \"default\",\n            \"mtu\": 1500\n        },\n        \"configsync\": {\n            \"class\": \"ConfigSync\",\n            \"configsyncIp\": \"/Common/internal-self/address\"\n        },\n        \"failoverAddress\": {\n            \"class\": \"FailoverUnicast\",\n            \"address\": \"/Common/internal-self/address\"\n        },\n        \"failoverGroup\": {\n            \"class\": \"DeviceGroup\",\n            \"type\": \"sync-failover\",\n            \"members\": [\"bigipa.example.com\", \"bigipb.example.com\"],\n            \"owner\": \"/Common/failoverGroup/members/0\",\n            \"autoSync\": true,\n            \"saveOnAutoSync\": false,\n            \"networkFailover\": true,\n            \"fullLoadOnSync\": false,\n            \"asmSync\": false\n        },\n        \"trust\": {\n            \"class\": \"DeviceTrust\",\n            \"localUsername\": \"admin\",\n            \"localPassword\": \"admin\",\n            \"remoteHost\": \"/Common/failoverGroup/members/0\",\n            \"remoteUsername\": \"admin\",\n            \"remotePassword\": \"admin\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clustered declaration - LTM2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schemaVersion\": \"1.0.0\",\n    \"class\": \"Device\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"hostname\": \"bigipa.example.com\",\n        \"myLicense\": {\n            \"class\": \"License\",\n            \"licenseType\": \"regKey\",\n            \"regKey\": \"AAAAA-BBBBB-CCCCC-DDDDD-EEEEEEE\"\n        },\n        \"myDns\": {\n            \"class\": \"DNS\",\n            \"nameServers\": [\n                \"8.8.8.8\"\n            ],\n            \"search\": [\n                \"lab.local\"\n            ]\n        },\n        \"myNtp\": {\n            \"class\": \"NTP\",\n            \"servers\": [\n                \"0.pool.ntp.org\",\n                \"1.pool.ntp.org\"\n            ],\n            \"timezone\": \"UTC\"\n        },\n        \"root\": {\n            \"class\": \"User\",\n            \"userType\": \"root\",\n            \"oldPassword\": \"default\",\n            \"newPassword\": \"default\"\n        },\n        \"admin\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"admin\",\n            \"shell\": \"bash\"\n        },\n        \"anotherUser\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"foobar\",\n            \"partitionAccess\": {\n                \"Common\": {\n                    \"role\": \"guest\"\n                }\n            }\n        },\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\",\n            \"afm\": \"nominal\"\n        },\n        \"internal\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4093,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.2\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"internal-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.2.2.10/24\",\n            \"vlan\": \"internal\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"external\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4094,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.1\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"external-localself\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.1.1.10/24\",\n            \"vlan\": \"external\",\n            \"allowService\": \"none\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"external-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.1.1.20/24\",\n            \"vlan\": \"external\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-1\"\n        },\n        \"default\": {\n            \"class\": \"Route\",\n            \"gw\": \"10.1.1.1\",\n            \"network\": \"default\",\n            \"mtu\": 1500\n        },\n        \"configsync\": {\n            \"class\": \"ConfigSync\",\n            \"configsyncIp\": \"/Common/internal-self/address\"\n        },\n        \"failoverAddress\": {\n            \"class\": \"FailoverUnicast\",\n            \"address\": \"/Common/internal-self/address\"\n        },\n        \"failoverGroup\": {\n            \"class\": \"DeviceGroup\",\n            \"type\": \"sync-failover\",\n            \"members\": [\"bigipa.example.com\", \"bigipb.example.com\"],\n            \"owner\": \"/Common/failoverGroup/members/0\",\n            \"autoSync\": true,\n            \"saveOnAutoSync\": false,\n            \"networkFailover\": true,\n            \"fullLoadOnSync\": false,\n            \"asmSync\": false\n        },\n        \"trust\": {\n            \"class\": \"DeviceTrust\",\n            \"localUsername\": \"admin\",\n            \"localPassword\": \"admin\",\n            \"remoteHost\": \"/Common/failoverGroup/members/0\",\n            \"remoteUsername\": \"admin\",\n            \"remotePassword\": \"admin\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standalone declaration - GTM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schemaVersion\": \"1.0.0\",\n    \"class\": \"Device\",\n    \"async\": \"true\",\n    \"label\": \"BIG-IP declarative onboarding declaration\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"hostname\": \"ltm1.lab.local\",\n        \"myLicense\": {\n            \"class\": \"License\",\n            \"licenseType\": \"regKey\",\n            \"regKey\": \"AAAAA-BBBBB-CCCCC-DDDDD-EEEEEEE\"\n        },\n        \"myDns\": {\n            \"class\": \"DNS\",\n            \"nameServers\": [\n                \"8.8.8.8\"\n            ],\n            \"search\": [\n                \"lab.local\"\n            ]\n        },\n        \"myNtp\": {\n            \"class\": \"NTP\",\n            \"servers\": [\n                \"0.pool.ntp.org\"\n            ],\n            \"timezone\": \"CST\"\n        },\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\"\n        },\n        \"internal\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4093,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.2\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"internal-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.1.20.4/24\",\n            \"vlan\": \"internal\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"external\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4094,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.1\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"external-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.1.10.4/24\",\n            \"vlan\": \"external\",\n            \"allowService\": \"none\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "License a BIG-IP with BIG-IQ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schemaVersion\": \"1.0.0\",\n    \"class\": \"Device\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"hostname\": \"bigipa.example.com\",\n        \"myLicense\": {\n            \"class\": \"License\",\n            \"licenseType\": \"licensePool\",\n            \"bigIqHost\": \"10.0.0.10\",\n            \"bigIqUsername\": \"admin\",\n            \"bigIqPassword\": \"admin\",\n            \"licensePool\": \"regKeyPool\",\n            \"skuKeyword1\": \"key1\",\n            \"skuKeyword2\": \"key2\",\n            \"unitOfMeasure\": \"hourly\",\n            \"reachable\": true,\n            \"bigIpUsername\": \"admin\",\n            \"bigIpPassword\": \"admin\"\n        },\n        \"myDns\": {\n            \"class\": \"DNS\",\n            \"nameServers\": [\n                \"8.8.8.8\"\n            ],\n            \"search\": [\n                \"lab.local\"\n            ]\n        },\n        \"myNtp\": {\n            \"class\": \"NTP\",\n            \"servers\": [\n                \"0.pool.ntp.org\",\n                \"1.pool.ntp.org\"\n            ],\n            \"timezone\": \"EST\"\n        },\n        \"root\": {\n            \"class\": \"User\",\n            \"userType\": \"root\",\n            \"oldPassword\": \"default\",\n            \"newPassword\": \"default\"\n        },\n        \"admin\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"admin\",\n            \"shell\": \"bash\"\n        },\n        \"anotherUser\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"foobar\",\n            \"partitionAccess\": {\n                \"Common\": {\n                    \"role\": \"guest\"\n                }\n            }\n        },\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\",\n            \"afm\": \"nominal\"\n        },\n        \"internal\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4093,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.2\",\n                    \"tagged\": false\n                }\n            ]\n        },\n        \"internal-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.10.0.100/24\",\n            \"vlan\": \"internal\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"external\": {\n            \"class\": \"VLAN\",\n            \"tag\": 4094,\n            \"mtu\": 1500,\n            \"interfaces\": [\n                {\n                    \"name\": \"1.1\",\n                    \"tagged\": true\n                }\n            ]\n        },\n        \"external-self\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"10.0.1.100/24\",\n            \"vlan\": \"external\",\n            \"allowService\": \"all\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"default\": {\n            \"class\": \"Route\",\n            \"gw\": \"10.0.1.1\",\n            \"network\": \"default\",\n            \"mtu\": 1500\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2 - DO - Container",
+			"item": [
+				{
+					"name": "Clustered declaration - LTM1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"DO\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetPort\": 8443,\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"declaration\": {\n        \"class\": \"Device\",\n        \"schemaVersion\": \"1.0.0\",\n        \"async\": \"true\",\n        \"label\": \"BIG-IP declarative onboarding declaration\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"hostname\": \"bigip1.lab.local\",\n            \"myDns\": {\n                \"class\": \"DNS\",\n                \"nameServers\": [\n                    \"8.8.8.8\"\n                ],\n                \"search\": [\n                    \"lab.local\"\n                ]\n            },\n            \"myNtp\": {\n                \"class\": \"NTP\",\n                \"servers\": [\n                    \"0.pool.ntp.org\",\n                    \"1.pool.ntp.org\"\n                ],\n                \"timezone\": \"EST\" \n            },\n            \"guestUser\": {\n                \"class\": \"User\",\n                \"userType\": \"regular\",\n                \"password\": \"guestNewPass1\",\n                \"partitionAccess\": {\n                    \"Common\": {\n                        \"role\": \"guest\"\n                    }\n                }\n            },\n            \"anotherUser\": {\n                \"class\": \"User\",\n                \"userType\": \"regular\",\n                \"password\": \"myPass1word\",\n                \"shell\": \"none\",\n                \"partitionAccess\": {\n                    \"all-partitions\": {\n                        \"role\": \"guest\"\n                    }\n                }\n            },\n            \"myProvisioning\": {\n                \"class\": \"Provision\",\n                \"ltm\": \"nominal\",\n                \"afm\": \"nominal\"\n            },\n            \"dbvars\": {\n                \"class\": \"DbVariables\",\n                \"ui.advisory.enabled\": true,\n                \"ui.advisory.color\": \"yello\",\n                \"ui.advisory.text\": \"/Common/hostname\"\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{do_container}}/mgmt/shared/declarative-onboarding",
+							"protocol": "http",
+							"host": [
+								"{{do_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clustered declaration - LTM2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"DO\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetPort\": 8443,\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"declaration\": {\n        \"class\": \"Device\",\n        \"schemaVersion\": \"1.0.0\",\n        \"async\": \"true\",\n        \"label\": \"BIG-IP declarative onboarding declaration\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"hostname\": \"bigip1.lab.local\",\n            \"myDns\": {\n                \"class\": \"DNS\",\n                \"nameServers\": [\n                    \"8.8.8.8\"\n                ],\n                \"search\": [\n                    \"lab.local\"\n                ]\n            },\n            \"myNtp\": {\n                \"class\": \"NTP\",\n                \"servers\": [\n                    \"0.pool.ntp.org\",\n                    \"1.pool.ntp.org\"\n                ],\n                \"timezone\": \"EST\" \n            },\n            \"guestUser\": {\n                \"class\": \"User\",\n                \"userType\": \"regular\",\n                \"password\": \"guestNewPass1\",\n                \"partitionAccess\": {\n                    \"Common\": {\n                        \"role\": \"guest\"\n                    }\n                }\n            },\n            \"anotherUser\": {\n                \"class\": \"User\",\n                \"userType\": \"regular\",\n                \"password\": \"myPass1word\",\n                \"shell\": \"none\",\n                \"partitionAccess\": {\n                    \"all-partitions\": {\n                        \"role\": \"guest\"\n                    }\n                }\n            },\n            \"myProvisioning\": {\n                \"class\": \"Provision\",\n                \"ltm\": \"nominal\",\n                \"afm\": \"nominal\"\n            },\n            \"dbvars\": {\n                \"class\": \"DbVariables\",\n                \"ui.advisory.enabled\": true,\n                \"ui.advisory.color\": \"yello\",\n                \"ui.advisory.text\": \"/Common/hostname\"\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{do_container}}/mgmt/shared/declarative-onboarding",
+							"protocol": "http",
+							"host": [
+								"{{do_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standalone declaration - GTM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"DO\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetPort\": 8443,\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"declaration\": {\n        \"class\": \"Device\",\n        \"schemaVersion\": \"1.0.0\",\n        \"async\": \"true\",\n        \"label\": \"BIG-IP declarative onboarding declaration\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"hostname\": \"bigip1.lab.local\",\n            \"myDns\": {\n                \"class\": \"DNS\",\n                \"nameServers\": [\n                    \"8.8.8.8\"\n                ],\n                \"search\": [\n                    \"lab.local\"\n                ]\n            },\n            \"myNtp\": {\n                \"class\": \"NTP\",\n                \"servers\": [\n                    \"0.pool.ntp.org\",\n                    \"1.pool.ntp.org\"\n                ],\n                \"timezone\": \"EST\" \n            },\n            \"guestUser\": {\n                \"class\": \"User\",\n                \"userType\": \"regular\",\n                \"password\": \"guestNewPass1\",\n                \"partitionAccess\": {\n                    \"Common\": {\n                        \"role\": \"guest\"\n                    }\n                }\n            },\n            \"anotherUser\": {\n                \"class\": \"User\",\n                \"userType\": \"regular\",\n                \"password\": \"myPass1word\",\n                \"shell\": \"none\",\n                \"partitionAccess\": {\n                    \"all-partitions\": {\n                        \"role\": \"guest\"\n                    }\n                }\n            },\n            \"myProvisioning\": {\n                \"class\": \"Provision\",\n                \"ltm\": \"nominal\",\n                \"afm\": \"nominal\"\n            },\n            \"dbvars\": {\n                \"class\": \"DbVariables\",\n                \"ui.advisory.enabled\": true,\n                \"ui.advisory.color\": \"yello\",\n                \"ui.advisory.text\": \"/Common/hostname\"\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{do_container}}/mgmt/shared/declarative-onboarding",
+							"protocol": "http",
+							"host": [
+								"{{do_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3 - AS3 - BIG-IP",
+			"item": [
+				{
+					"name": "DNS",
+					"item": [
+						{
+							"name": "Create GSLB Domain (WIP)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"id\": \"{{tenant_name}}_domain\",\n    \"label\": \"{{tenant_name}} GSLB Configuration\",\n    \"remark\": \"GSLB Pool Configuration\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"{{tenant_name}}_domain\": {\n        \"class\": \"Tenant\",\n        \"label\": \"{{tenant_name}} domain\",\n        \"{{tenant_name}}_domain\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"{{service_name}}_app\": {\n                \"class\": \"GSLB_Domain\",\n                \"domainName\": \"{{tenant_name}}.lab.local\",\n                \"resourceRecordType\": \"A\",\n                \"enabled\": true\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{gtm_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create GSLB Pool",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"id\": \"{{tenant_name}}_domain\",\n    \"label\": \"{{tenant_name}} GSLB Configuration\",\n    \"remark\": \"GSLB Configuration\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"{{tenant_name}}_domain\": {\n        \"class\": \"Tenant\",\n        \"Application\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"label\": \"{{tenant_name}} domain\",\n            \"{{service_name}}_app\": {\n                \"class\": \"GSLB_Pool\",\n                \"resourceRecordType\": \"A\",\n                \"enabled\": true,\n                \"lbModeAlternate\": \"ratio\",\n                \"lbModeFallback\": \"ratio\",\n                \"manualResumeEnabled\": true,\n                \"verifyMemberEnabled\": true,\n                \"members\": [\n                    {\n                        \"server\": {\n                            \"bigip\": \"/Common/bigipa\"\n                        },\n                        \"virtualServer\": \"/{{tenant_name}}/{{service_name}}/{{service_name}}\"\n                    }\n                ],\n                \"monitors\": [\n                    {\n                        \"bigip\": \"/Common/bigip\"\n                    }\n                ],\n                \"bpsLimitEnabled\": false,\n                \"ppsLimitEnabled\": false,\n                \"connectionsLimitEnabled\": false,\n                \"maxAnswersReturned\": 1\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{gtm_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "ADC",
+					"item": [
+						{
+							"name": "Create Generic Service",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"generic\",\n                \"{{service_name}}\": {\n                    \"class\": \"Service_Generic\",\n                    \"virtualAddresses\": [\n                        \"10.1.20.200\"\n                    ],\n                    \"virtualPort\": 8080\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Simple L4 Serivce",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"L4 App\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"persistenceMethods\": [\n                        {\n                            \"use\": \"{{tenant_name}}_persistence\"\n                        }\n                    ],\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"10.1.1.14\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"pool\": \"{{tenant_name}}_pool\"\n                },\n                \"{{tenant_name}}_persistence\": {\n                    \"class\": \"Persist\",\n                    \"persistenceMethod\": \"source-address\",\n                    \"duration\": 1800\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                },\n                \"{{tenant_name}}_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"slowRampTime\": 300,\n                    \"monitors\": [\n                        {\n                            \"use\": \"{{tenant_name}}_monitor\"\n                        }\n                    ],\n                    \"minimumMembersActive\": 1,\n                    \"members\": [\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.3.3.3\"\n                            ],\n                            \"priorityGroup\": 200\n                        },\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.3.3.4\"\n                            ],\n                            \"priorityGroup\": 100\n                        }\n                    ]\n                },\n                \"{{tenant_name}}_monitor\": {\n                    \"class\": \"Monitor\",\n                    \"monitorType\": \"https\",\n                    \"send\": \"HEAD / HTTP/1.0rnrn\",\n                    \"receive\": \"HTTP/1.\",\n                    \"interval\": 3,\n                    \"timeout\": 10\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Fast L4 App",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} TCP Fast L4 APP\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}_app\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"persistenceMethods\": [\n                        {\n                            \"use\": \"{{tenant_name}}_persistence\"\n                        }\n                    ],\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"pool\": \"{{tenant_name}}_pool\",\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_persistence\": {\n                    \"class\": \"Persist\",\n                    \"persistenceMethod\": \"source-address\",\n                    \"duration\": 1800,\n                    \"mirror\": true\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                },\n                \"{{tenant_name}}_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"least-connections-member\",\n                    \"slowRampTime\": 10,\n                    \"monitors\": [\n                        {\n                            \"use\": \"{{tenant_name}}_mon\"\n                        }\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.201\",\n                                \"10.2.2.202\"\n                            ]\n                        }\n                    ]\n                },\n                \"{{tenant_name}}_mon\": {\n                    \"class\": \"Monitor\",\n                    \"monitorType\": \"tcp\",\n                    \"targetPort\": 22,\n                    \"send\": \"\",\n                    \"receive\": \"\"\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTP App",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}_HTTP\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} HTTP Service\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"http\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTP\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"pool\": \"web_pool\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\",\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTP App w/ priorityGroup",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n     \"class\": \"AS3\",\n     \"action\": \"deploy\",\n     \"persist\": true,\n     \"declaration\": {\n         \"class\": \"ADC\",\n         \"schemaVersion\": \"3.9.0\",\n         \"id\": \"{{tenant_name}}_HTTP_pg\",\n         \"label\": \"{{tenant_name}}\",\n         \"remark\": \"{{tenant_name}} HTTP Service\",\n         \"{{tenant_name}}\": {\n             \"class\": \"Tenant\",\n             \"{{service_name}}\": {\n                 \"class\": \"Application\",\n                 \"template\": \"http\",\n                 \"serviceMain\": {\n                     \"class\": \"Service_HTTP\",\n                     \"virtualAddresses\": [\n                         \"10.0.1.100\"\n                     ],\n                     \"pool\": \"web_pool\"\n                 },\n                 \"web_pool\": {\n                     \"class\": \"Pool\",\n                     \"monitors\": [\n                         \"http\"\n                     ],\n                     \"members\": [\n                         {\n                             \"servicePort\": 80,\n                             \"serverAddresses\": [\n                                 \"10.2.2.101\"\n                             ],\n                             \"priorityGroup\": 10\n                         },\n                         {\n                             \"servicePort\": 80,\n                             \"serverAddresses\": [\n                                 \"10.2.2.102\"\n                             ],\n                             \"priorityGroup\": 20\n                         }\n                     ]\n                 }\n             }\n         }\n     }\n }"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTP Service with URI Steering",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}_HTTP_DG\",\n        \"{{tenant_name}}_HTTP_DG\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}_vs\": {\n                \"class\": \"Application\",\n                \"template\": \"http\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTP\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.101\"\n                    ],\n                    \"snat\": \"auto\",\n                    \"pool\": \"front_end_pool\",\n                    \"policyEndpoint\": \"back_end_l7_policy\"\n                },\n                \"front_end_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\"\n                            ]\n                        }\n                    ]\n                },\n                \"back_end_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                },\n                \"back_end_path_data_group\" :{\n                    \"class\": \"Data_Group\",\n                    \"keyDataType\": \"string\",\n                    \"records\": [\n                        {\n                            \"key\":\"/app/\"\n                        },\n                        {\n                            \"key\":\"/catalog/\"\n                        },\n                        {\n                            \"key\":\"/store/\"\n                        }\n                    ]\n                },\n                \"back_end_l7_policy\": {\n                    \"class\": \"Endpoint_Policy\",\n                    \"remark\": \"L7 policy for back_end_pool\",\n                    \"rules\": [\n                        {\n                            \"name\": \"back_end_path\",\n                            \"conditions\": [\n                                {\n                                    \"type\": \"httpUri\",\n                                    \"event\": \"request\",\n                                    \"path\": {\n                                        \"operand\": \"starts-with\",\n                                        \"values\": [\n                                            \"/app/*\",\n                                            \"/catalog/*\",\n                                            \"/store/*\"\n                                        ]\n                                    }\n                                }\n                            ],\n                            \"actions\": [\n                                {\n                                    \"type\": \"forward\",\n                                    \"event\": \"request\",\n                                    \"select\": {\n                                        \"pool\": {\n                                            \"use\": \"back_end_pool\"\n                                        }\n                                    }\n                                }\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTPS App",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} HTTPs with predictive-node LB\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"pool\": \"web_pool\",\n                    \"serverTLS\": \"webtls\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"predictive-node\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\",\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"remark\": \"Use a passphrase!\",\n                    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\\n-----END CERTIFICATE-----\",\n                    \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nProc-Type: 4,ENCRYPTED\\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\\n\\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\\n-----END RSA PRIVATE KEY-----\",\n                    \"passphrase\": {\n                        \"ciphertext\": \"ZjVmNQ==\",\n                        \"protected\": \"eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0\"\n                    }\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTPS Server and Match to SNI",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} match SNI\",\n        \"controls\": {\n            \"class\": \"Controls\",\n            \"logLevel\": \"debug\",\n            \"trace\": true\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"serverTLS\": \"webtls\"\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"matchToSNI\": \"wwww.lab.local\",\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"remark\": \"Use a passphrase!\",\n                    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\\n-----END CERTIFICATE-----\",\n                    \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nProc-Type: 4,ENCRYPTED\\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\\n\\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\\n-----END RSA PRIVATE KEY-----\",\n                    \"passphrase\": {\n                        \"ciphertext\": \"ZjVmNQ==\",\n                        \"protected\": \"eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0\"\n                    }\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Multiple Tenants w/Single Declaration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"declarations\": [\n        {\n            \"{{tenant_name}}_1\": {\n                \"class\": \"Tenant\",\n                \"{{service_name}}\": {\n                    \"class\": \"Application\",\n                    \"template\": \"http\",\n                    \"serviceMain\": {\n                        \"class\": \"Service_HTTP\",\n                        \"virtualAddresses\": [\n                            \"10.1.1.101\"\n                        ],\n                        \"pool\": \"web_pool_1\"\n                    },\n                    \"web_pool_1\": {\n                        \"class\": \"Pool\",\n                        \"monitors\": [\n                            \"http\"\n                        ],\n                        \"members\": [\n                            {\n                                \"servicePort\": 80,\n                                \"serverAddresses\": [\n                                    \"10.2.2.101\",\n                                    \"10.2.2.102\"\n                                ]\n                            }\n                        ]\n                    }\n                }\n            },\n            \"class\": \"ADC\",\n            \"schemaVersion\": \"3.0.0\",\n            \"id\": \"{{tenant_name}}_1\",\n            \"updateMode\": \"selective\",\n            \"controls\": {\n                \"trace\": true,\n                \"logLevel\": \"debug\"\n            }\n        },\n        {\n            \"{{tenant_name}}_2\": {\n                \"class\": \"Tenant\",\n                \"{{service_name}}\": {\n                    \"class\": \"Application\",\n                    \"template\": \"http\",\n                    \"serviceMain\": {\n                        \"class\": \"Service_HTTP\",\n                        \"virtualAddresses\": [\n                            \"10.1.1.102\"\n                        ],\n                        \"pool\": \"web_pool_2\"\n                    },\n                    \"web_pool_2\": {\n                        \"class\": \"Pool\",\n                        \"monitors\": [\n                            \"http\"\n                        ],\n                        \"members\": [\n                            {\n                                \"servicePort\": 80,\n                                \"serverAddresses\": [\n                                    \"10.2.2.201\",\n                                    \"10.2.2.202\"\n                                ]\n                            }\n                        ]\n                    }\n                }\n            },\n            \"class\": \"ADC\",\n            \"schemaVersion\": \"3.9.0\",\n            \"id\": \"{{tenant_name}}_2\",\n            \"updateMode\": \"selective\",\n            \"controls\": {\n                \"trace\": true,\n                \"logLevel\": \"debug\"\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Security",
+					"item": [
+						{
+							"name": "Create a Clone Pool",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"id\": \"{{tenant_name}}_clone_pool\",\n    \"remark\": \"{{tenant_name}} clone pool\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"{{tenant_name}}_clone_pool\": {\n        \"class\": \"Tenant\",\n        \"{{service_name}}\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"{{service_name}}\": {\n                \"class\": \"Service_HTTP\",\n                \"virtualAddresses\": [\n                    \"10.1.1.101\",\n                    \"10.1.1.102\"\n                ],\n                \"virtualPort\": 80,\n                \"clonePools\": {\n                    \"ingress\": {\n                        \"use\": \"clonePoolIngress\"\n                    },\n                    \"egress\": {\n                        \"use\": \"clonePoolEgress\"\n                    }\n                }\n            },\n            \"clonePoolIngress\": {\n                \"class\": \"Pool\",\n                \"members\": [\n                    {\n                        \"servicePort\": 443,\n                        \"serverAddresses\": [\n                            \"10.2.2.101\",\n                            \"10.2.2.102\"\n                        ]\n                    }\n                ]\n            },\n            \"clonePoolEgress\": {\n                \"class\": \"Pool\",\n                \"members\": [\n                    {\n                        \"servicePort\": 443,\n                        \"serverAddresses\": [\n                            \"10.2.2.201\",\n                            \"10.2.2.202\"\n                        ]\n                    }\n                ]\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Firewall Rule",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"id\": \"TEST_Clone_Pools\",\n    \"remark\": \"Test Clone Pools Support\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"TEST_Clone_Pools\": {\n        \"class\": \"Tenant\",\n        \"Application\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"testService\": {\n                \"class\": \"Service_HTTP\",\n                \"virtualAddresses\": [\n                    \"198.19.192.34\",\n                    \"198.19.192.35\"\n                ],\n                \"virtualPort\": 80,\n                \"clonePools\": {\n                    \"ingress\": {\n                        \"use\": \"testPoolIngress\"\n                    },\n                    \"egress\": {\n                        \"use\": \"testPoolEgress\"\n                    }\n                }\n            },\n            \"testPoolIngress\": {\n                \"class\": \"Pool\",\n                \"members\": [\n                    {\n                        \"servicePort\": 443,\n                        \"serverAddresses\": [\n                            \"198.19.192.51\",\n                            \"198.19.192.52\"\n                        ]\n                    }\n                ]\n            },\n            \"testPoolEgress\": {\n                \"class\": \"Pool\",\n                \"members\": [\n                    {\n                        \"servicePort\": 443,\n                        \"serverAddresses\": [\n                            \"198.19.192.54\",\n                            \"198.19.192.55\"\n                        ]\n                    }\n                ]\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create DDoS Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"id\": \"{{tenant_name}}_DDoS\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"{{tenant_name}}_DDoS_profile\": {\n        \"class\": \"Tenant\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"{{service_name}}\": {\n                \"class\": \"DOS_Profile\",\n                \"application\": {\n                    \"blacklistedGeolocations\": [\"Timor-Leste\", \"Cocos (Keeling) Islands\"],\n                    \"whitelistedGeolocations\": [\"Bonaire, Saint Eustatius and Saba\", \"Cote D'Ivoire\"],\n                    \"captchaResponse\": {\n                        \"first\": \"Are you a robot&quest;<br><br>%DOSL7.captcha.image% %DOSL7.captcha.change%<br><b>What code is in the image&quest;</b>%DOSL7.captcha.solution%<br>%DOSL7.captcha.submit%<br><br>Your supportID is: %DOSL7.captcha.support_id%.\",\n                        \"failure\": \"Error!<br><br>%DOSL7.captcha.image% %DOSL7.captcha.change%<br><b>What code is in the image&quest;</b>%DOSL7.captcha.solution%<br>%DOSL7.captcha.submit%<br><br>Your support ID is: %DOSL7.captcha.support_id%.\"\n                    },\n                    \"heavyURLProtection\": {\n                        \"automaticDetectionEnabled\": true,\n                        \"detectionThreshold\": 16,\n                        \"excludeList\": [\"example.com\"],\n                        \"protectList\": [{\n                                \"url\": \"www.google.com\",\n                                \"threshold\": 0\n                            }\n                        ]\n                    },\n                    \"triggerIRule\": true,\n                    \"scrubbingDuration\": 42,\n                    \"remoteTriggeredBlackHoleDuration\": 10,\n                    \"profileAcceleration\": {\n                        \"bigip\": \"/Common/full-acceleration\"\n                    },\n                    \"botDefense\": {\n                        \"mode\": \"during-attacks\",\n                        \"blockSuspiscousBrowsers\": true,\n                        \"issueCaptchaChallenge\": true,\n                        \"gracePeriod\": 4000,\n                        \"crossDomainRequests\": \"validate-bulk\",\n                        \"siteDomains\": [\"www.google.com\"],\n                        \"externalDomains\": [\"www.yahoo.com\"],\n                        \"urlWhitelist\": [\"www.bing.com\"]\n                    },\n                    \"botSignatures\": {\n                        \"checkingEnabled\": true,\n                        \"blockedCategories\": [{\n                                \"bigip\": \"/Common/Search Engine\"\n                            }\n                        ],\n                        \"reportedCategories\": [{\n                                \"bigip\": \"/Common/Crawler\"\n                            }\n                        ]\n                    },\n                    \"rateBasedDetection\": {\n                        \"operationMode\": \"off\",\n                        \"thresholdsMode\": \"manual\",\n                        \"escalationPeriod\": 120,\n                        \"deEscalationPeriod\": 7200,\n                        \"sourceIP\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"rateLimitingMode\": \"rate-limit\"\n                        },\n                        \"deviceID\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"rateLimitingMode\": \"rate-limit\"\n                        },\n                        \"geolocation\": {\n                            \"minimumShare\": 10,\n                            \"shareIncreaseRate\": 500,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"rateLimitingMode\": \"rate-limit\"\n                        },\n                        \"url\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true\n                        },\n                        \"site\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true\n                        }\n                    },\n                    \"stressBasedDetection\": {\n                        \"badActor\": {\n                            \"detectionEnabled\": false,\n                            \"mitigationMode\": \"none\",\n                            \"signatureDetectionEnabled\": false,\n                            \"useApprovedSignaturesOnly\": false\n                        },\n                        \"operationMode\": \"off\",\n                        \"thresholdsMode\": \"manual\",\n                        \"escalationPeriod\": 120,\n                        \"deEscalationPeriod\": 7200,\n                        \"sourceIP\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"rateLimitingMode\": \"rate-limit\"\n                        },\n                        \"deviceID\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"rateLimitingMode\": \"rate-limit\"\n                        },\n                        \"geolocation\": {\n                            \"minimumShare\": 10,\n                            \"shareIncreaseRate\": 500,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"rateLimitingMode\": \"rate-limit\"\n                        },\n                        \"url\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true,\n                            \"heavyURLProtectionEnabled\": true\n                        },\n                        \"site\": {\n                            \"minimumTps\": 40,\n                            \"tpsIncreaseRate\": 500,\n                            \"maximumTps\": 200,\n                            \"minimumAutoTps\": 5,\n                            \"maximumAutoTps\": 5000,\n                            \"clientSideDefenseEnabled\": false,\n                            \"captchaChallengeEnabled\": false,\n                            \"rateLimitingEnabled\": true\n                        }\n                    },\n                    \"recordTraffic\": {\n                        \"maximumDuration\": 10,\n                        \"maximumSize\": 10,\n                        \"recordTrafficEnabled\": false,\n                        \"repetitionInterval\": 10\n                    }\n                },\n                \"network\": {\n                    \"dynamicSignatures\": {\n                        \"detectionMode\": \"enabled\",\n                        \"mitigationMode\": \"medium\",\n                        \"scrubbingEnabled\": true,\n                        \"scrubbingCategory\": {\n                            \"bigip\": \"/Common/botnets\"\n                        },\n                        \"scrubbingDuration\": 60\n                    },\n                    \"vectors\": [{\n                            \"type\": \"hop-cnt-low\",\n                            \"state\": \"learn-only\",\n                            \"thresholdMode\": \"manual\",\n                            \"rateThreshold\": 40000,\n                            \"rateIncreaseThreshold\": 600,\n                            \"rateLimit\": 1000000,\n                            \"simulateAutoThresholdEnabled\": true,\n                            \"badActorSettings\": {\n                                \"enabled\": true,\n                                \"sourceDetectionThreshold\": 0,\n                                \"sourceMitigationThreshold\": 0\n                            },\n                            \"autoBlacklistSettings\": {\n                                \"enabled\": true,\n                                \"category\": {\n                                    \"bigip\": \"/Common/botnets\"\n                                },\n                                \"attackDetectionTime\": 1,\n                                \"categoryDuration\": 60,\n                                \"externalAdvertisementEnabled\": true\n                            }\n                        }\n                    ]\n                },\n                \"protocolDNS\": {\n                    \"vectors\": [{\n                            \"type\": \"ptr\",\n                            \"state\": \"mitigate\",\n                            \"thresholdMode\": \"fully-automatic\",\n                            \"autoAttackFloor\": 0,\n                            \"autoAttackCeiling\": 0\n                        }\n                    ]\n                },\n                \"protocolSIP\": {\n                    \"vectors\": [{\n                            \"type\": \"cancel\",\n                            \"state\": \"disabled\",\n                            \"thresholdMode\": \"fully-automatic\",\n                            \"autoAttackFloor\": 4294967295,\n                            \"autoAttackCeiling\": 4294967295,\n                            \"rateIncreaseThreshold\": 4294967295\n                        }\n                    ]\n                },\n                \"whitelist\": {\n                    \"use\": \"addressList\"\n                },\n                \"applicationWhitelist\": {\n                    \"use\": \"addressListHTTP\"\n                }\n            },\n            \"addressList\": {\n                \"class\": \"Firewall_Address_List\",\n                \"addresses\": [\"10.0.0.10\"]\n            },\n            \"addressListHTTP\": {\n                \"class\": \"Firewall_Address_List\",\n                \"addresses\": [\"10.0.0.11\"]\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Apply DDoS Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"id\": \"{{tenant_name}}_DDoS_profile\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"{{tenant_name}}_DDoS_mobile\": {\n        \"class\": \"Tenant\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"{{service_name}}_DDoS_profile\": {\n                \"class\": \"DOS_Profile\",\n                \"application\": {\n                    \"scrubbingDuration\": 42,\n                    \"remoteTriggeredBlackHoleDuration\": 10,\n                    \"mobileDefense\": {\n                        \"enabled\": true,\n                        \"allowAndroidPublishers\": [{\n                                \"bigip\": \"/Common/default.crt\"\n                            }\n                        ],\n                        \"allowAndroidRootedDevice\": true,\n                        \"allowIosPackageNames\": [\"theName\"],\n                        \"allowJailbrokenDevices\": true,\n                        \"allowEmulators\": true,\n                        \"clientSideChallengeMode\": \"challenge\"\n                    }\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Endpoint Policy with default rule to disable WAF",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{TOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.7.0\",\n    \"id\": \"Service_HTTP\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"TEST_Service_HTTP\": {\n        \"class\": \"Tenant\",\n        \"Application\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"testItem\": {\n                \"class\": \"Service_HTTP\",\n                \"policyEndpoint\": \"endpointPolicy\",\n                \"virtualAddresses\": [\"10.1.40.50\"]\n            },\n            \"endpointPolicy\": {\n                \"class\": \"Endpoint_Policy\",\n                \"rules\": [{\n                        \"name\": \"enableWAF\",\n                        \"conditions\": [],\n                        \"actions\": [{\n                                \"type\": \"waf\",\n                                \"policy\": {\n                                    \"use\": \"wafPolicy\"\n                                }\n                            }\n                        ]\n                    }, {\n                        \"name\": \"disable\",\n                        \"conditions\": [],\n                        \"actions\": [{\n                                \"type\": \"waf\"\n                            }\n                        ]\n                    }\n                ]\n            },\n            \"wafPolicy\": {\n                \"class\": \"WAF_Policy\",\n                \"url\": \"http://artifactory.f5net.com/artifactory/orchestration-as3-test/resources/asm_policy/wordpress_template_12.0.xml\",\n                \"ignoreChanges\": true\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTPs App with WAF",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "300904c1-4c62-455a-8090-af831f839cd5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.globals.set(\"ID\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{IQTOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.7.0\",\n        \"id\": \"isc-lab\",\n        \"label\": \"Task3\",\n        \"remark\": \"Task 3 - HTTPS Application with WAF\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_a_mgmt}}\"\n        },\n        \"Task3\": {\n            \"class\": \"Tenant\",\n            \"MyWebApp3\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"statsProfile\": {\n                    \"class\": \"Analytics_Profile\",\n                    \"collectedStatsInternalLogging\": true,\n                    \"collectedStatsExternalLogging\": false,\n                    \"capturedTrafficInternalLogging\": false,\n                    \"capturedTrafficExternalLogging\": true,\n                    \"collectPageLoadTime\": true,\n                    \"collectClientSideStatistics\": true,\n                    \"collectResponseCode\": true,\n                    \"sessionCookieSecurity\": \"ssl-only\"\n                },\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.20.102\"\n                    ],\n                    \"pool\": \"web_pool\",\n                    \"profileAnalytics\": {\n                        \"use\": \"statsProfile\"\n                    },\n                    \"serverTLS\": \"webtls\",\n                    \"policyWAF\": {\n                        \"bigip\": \"/Common/linux-high\"\n                    }\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.1.10.104\",\n                                \"10.1.10.105\"\n                            ]\n                        }\n                    ]\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"certificate\": {\n                        \"bigip\": \"/Common/default.crt\"\n                    },\n                    \"privateKey\": {\n                        \"bigip\": \"/Common/default.key\"\n                    }\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create HTTPS Offload App",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "300904c1-4c62-455a-8090-af831f839cd5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.globals.set(\"ID\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"type": "text",
+										"value": "{{IQTOKEN}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.7.0\",\n        \"id\": \"isc-lab\",\n        \"label\": \"Task2\",\n        \"remark\": \"Task 2 - HTTPS Application Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_a_mgmt}}\"\n        },\n        \"Task2\": {\n            \"class\": \"Tenant\",\n            \"MyWebApp2\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"statsProfile\": {\n                    \"class\": \"Analytics_Profile\",\n                    \"collectedStatsInternalLogging\": true,\n                    \"collectedStatsExternalLogging\": false,\n                    \"capturedTrafficInternalLogging\": false,\n                    \"capturedTrafficExternalLogging\": true,\n                    \"collectPageLoadTime\": true,\n                    \"collectClientSideStatistics\": true,\n                    \"collectResponseCode\": true,\n                    \"sessionCookieSecurity\": \"ssl-only\"\n                },\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.20.101\"\n                    ],\n                    \"pool\": \"web_pool\",\n                    \"profileAnalytics\": {\n                        \"use\": \"statsProfile\"\n                    },\n                    \"serverTLS\": \"webtls\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.1.10.102\",\n                                \"10.1.10.103\"\n                            ]\n                        }\n                    ]\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"certificate\": {\n                        \"bigip\": \"/Common/default.crt\"\n                    },\n                    \"privateKey\": {\n                        \"bigip\": \"/Common/default.key\"\n                    }\n                }\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+									"protocol": "https",
+									"host": [
+										"{{big_ip_mgmt}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"appsvcs",
+										"declare"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete one AS3 Application",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare/{{tenant_name}}",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare",
+								"{{tenant_name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all AS3 Applications",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "23b27837-4467-4f40-9179-c6b47e918ba4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "87de0d0b-0bef-460d-a8fd-c24d11c30d31",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "3 - AS3 - BIG-IQ",
+			"item": [
+				{
+					"name": "Create Generic Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"generic\",\n                \"{{service_name}}\": {\n                    \"class\": \"Service_Generic\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.200\"\n                    ],\n                    \"virtualPort\": 8080\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Simple L4 Serivce",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"persistenceMethods\": [\n                        {\n                            \"use\": \"{{tenant_name}}_persistence\"\n                        }\n                    ],\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"10.1.1.10\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"pool\": \"{{tenant_name}}_pool\",\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_persistence\": {\n                    \"class\": \"Persist\",\n                    \"persistenceMethod\": \"source-address\",\n                    \"duration\": 1800\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                },\n                \"{{tenant_name}}_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"slowRampTime\": 300,\n                    \"monitors\": [\n                        {\n                            \"use\": \"{{tenant_name}}_monitor\"\n                        }\n                    ],\n                    \"minimumMembersActive\": 1,\n                    \"members\": [\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\"\n                            ],\n                            \"priorityGroup\": 200\n                        },\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.102\"\n                            ],\n                            \"priorityGroup\": 100\n                        }\n                    ]\n                },\n                \"{{tenant_name}}_monitor\": {\n                    \"class\": \"Monitor\",\n                    \"monitorType\": \"https\",\n                    \"send\": \"HEAD / HTTP/1.0rnrn\",\n                    \"receive\": \"HTTP/1.\",\n                    \"interval\": 3,\n                    \"timeout\": 10\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fast L4 App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}_app\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"persistenceMethods\": [\n                        {\n                            \"use\": \"{{tenant_name}}_persistence\"\n                        }\n                    ],\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"pool\": \"{{tenant_name}}_pool\",\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_persistence\": {\n                    \"class\": \"Persist\",\n                    \"persistenceMethod\": \"source-address\",\n                    \"duration\": 1800,\n                    \"mirror\": true\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                },\n                \"{{tenant_name}}_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"least-connections-member\",\n                    \"slowRampTime\": 10,\n                    \"monitors\": [\n                        {\n                            \"use\": \"{{tenant_name}}_mon\"\n                        }\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.201\",\n                                \"10.2.2.202\"\n                            ]\n                        }\n                    ]\n                },\n                \"{{tenant_name}}_mon\": {\n                    \"class\": \"Monitor\",\n                    \"monitorType\": \"tcp\",\n                    \"targetPort\": 22,\n                    \"send\": \"\",\n                    \"receive\": \"\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTP App",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"http\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTP\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"pool\": \"web_pool\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\",\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTP App w/ priorityGroup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n     \"class\": \"AS3\",\n     \"action\": \"deploy\",\n     \"persist\": true,\n     \"declaration\": {\n         \"class\": \"ADC\",\n         \"schemaVersion\": \"3.9.0\",\n         \"id\": \"{{tenant_name}}\",\n         \"label\": \"{{tenant_name}} task\",\n         \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n         \"target\": {\n         \t\"hostname\": \"{{big_ip_mgmt}}\"\n         },\n         \"{{tenant_name}}\": {\n             \"class\": \"Tenant\",\n             \"{{service_name}}\": {\n                 \"class\": \"Application\",\n                 \"template\": \"http\",\n                 \"serviceMain\": {\n                     \"class\": \"Service_HTTP\",\n                     \"virtualAddresses\": [\n                         \"10.0.1.100\"\n                     ],\n                     \"pool\": \"web_pool\"\n                 },\n                 \"web_pool\": {\n                     \"class\": \"Pool\",\n                     \"monitors\": [\n                         \"http\"\n                     ],\n                     \"members\": [\n                         {\n                             \"servicePort\": 80,\n                             \"serverAddresses\": [\n                                 \"10.2.2.101\"\n                             ],\n                             \"priorityGroup\": 10\n                         },\n                         {\n                             \"servicePort\": 80,\n                             \"serverAddresses\": [\n                                 \"10.2.2.102\"\n                             ],\n                             \"priorityGroup\": 20\n                         }\n                     ]\n                 }\n             }\n         }\n     }\n }"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTP Service with URI Steering",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}_HTTP_DG\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}_vs\": {\n                \"class\": \"Application\",\n                \"template\": \"http\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTP\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.101\"\n                    ],\n                    \"snat\": \"auto\",\n                    \"pool\": \"front_end_pool\",\n                    \"policyEndpoint\": \"back_end_l7_policy\"\n                },\n                \"front_end_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\"\n                            ]\n                        }\n                    ]\n                },\n                \"back_end_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                },\n                \"back_end_path_data_group\" :{\n                    \"class\": \"Data_Group\",\n                    \"keyDataType\": \"string\",\n                    \"records\": [\n                        {\n                            \"key\":\"/app/\"\n                        },\n                        {\n                            \"key\":\"/catalog/\"\n                        },\n                        {\n                            \"key\":\"/store/\"\n                        }\n                    ]\n                },\n                \"back_end_l7_policy\": {\n                    \"class\": \"Endpoint_Policy\",\n                    \"remark\": \"L7 policy for back_end_pool\",\n                    \"rules\": [\n                        {\n                            \"name\": \"back_end_path\",\n                            \"conditions\": [\n                                {\n                                    \"type\": \"httpUri\",\n                                    \"event\": \"request\",\n                                    \"path\": {\n                                        \"operand\": \"starts-with\",\n                                        \"values\": [\n                                            \"/app/*\",\n                                            \"/catalog/*\",\n                                            \"/store/*\"\n                                        ]\n                                    }\n                                }\n                            ],\n                            \"actions\": [\n                                {\n                                    \"type\": \"forward\",\n                                    \"event\": \"request\",\n                                    \"select\": {\n                                        \"pool\": {\n                                            \"use\": \"back_end_pool\"\n                                        }\n                                    }\n                                }\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTPS App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"pool\": \"web_pool\",\n                    \"serverTLS\": \"webtls\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"predictive-node\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\",\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"remark\": \"Use a passphrase!\",\n                    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\\n-----END CERTIFICATE-----\",\n                    \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nProc-Type: 4,ENCRYPTED\\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\\n\\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\\n-----END RSA PRIVATE KEY-----\",\n                    \"passphrase\": {\n                        \"ciphertext\": \"ZjVmNQ==\",\n                        \"protected\": \"eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0\"\n                    }\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTPS using SNI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"serverTLS\": \"webtls\"\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"matchToSNI\": \"wwww.lab.local\",\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"remark\": \"Use a passphrase!\",\n                    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\\n-----END CERTIFICATE-----\",\n                    \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nProc-Type: 4,ENCRYPTED\\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\\n\\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\\n-----END RSA PRIVATE KEY-----\",\n                    \"passphrase\": {\n                        \"ciphertext\": \"ZjVmNQ==\",\n                        \"protected\": \"eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0\"\n                    }\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Simple Forward Proxy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}} task\",\n        \"remark\": \"{{tenant_name}} - {{service_name}} Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"0.0.0.0\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check AS3 Deployment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/task/{{ID}}",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"task",
+								"{{ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check AS3 App Service",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"type": "text",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/cm/global/tasks/deploy-app-service",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"cm",
+								"global",
+								"tasks",
+								"deploy-app-service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete App",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{IQTOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.6.0\",\n        \"id\": \"example-declaration-01\",\n        \"label\": \"Task1\",\n        \"remark\": \"Task 1 - HTTP Application Service\",\n        \"target\": {\n            \"hostname\": \"{{big_ip_mgmt}}\"\n        },\n        \"Task1\": {\n        \t\"class\": \"Tenant\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare?async=true",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3 - AS3 - Container",
+			"item": [
+				{
+					"name": "Create Generic Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"generic\",\n                \"{{service_name}}\": {\n                    \"class\": \"Service_Generic\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.200\"\n                    ],\n                    \"virtualPort\": 8080\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Simple L4 Serivce",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"L4 App\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"persistenceMethods\": [\n                        {\n                            \"use\": \"{{tenant_name}}_persistence\"\n                        }\n                    ],\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"10.1.1.10\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"pool\": \"{{tenant_name}}_pool\",\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_persistence\": {\n                    \"class\": \"Persist\",\n                    \"persistenceMethod\": \"source-address\",\n                    \"duration\": 1800\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                },\n                \"{{tenant_name}}_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"slowRampTime\": 300,\n                    \"monitors\": [\n                        {\n                            \"use\": \"{{tenant_name}}_monitor\"\n                        }\n                    ],\n                    \"minimumMembersActive\": 1,\n                    \"members\": [\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\"\n                            ],\n                            \"priorityGroup\": 200\n                        },\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.102\"\n                            ],\n                            \"priorityGroup\": 100\n                        }\n                    ]\n                },\n                \"{{tenant_name}}_monitor\": {\n                    \"class\": \"Monitor\",\n                    \"monitorType\": \"https\",\n                    \"send\": \"HEAD / HTTP/1.0rnrn\",\n                    \"receive\": \"HTTP/1.\",\n                    \"interval\": 3,\n                    \"timeout\": 10\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fast L4 App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} TCP Fast L4 APP\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}_app\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"persistenceMethods\": [\n                        {\n                            \"use\": \"{{tenant_name}}_persistence\"\n                        }\n                    ],\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"pool\": \"{{tenant_name}}_pool\",\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_persistence\": {\n                    \"class\": \"Persist\",\n                    \"persistenceMethod\": \"source-address\",\n                    \"duration\": 1800,\n                    \"mirror\": true\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                },\n                \"{{tenant_name}}_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"least-connections-member\",\n                    \"slowRampTime\": 10,\n                    \"monitors\": [\n                        {\n                            \"use\": \"{{tenant_name}}_mon\"\n                        }\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 22,\n                            \"serverAddresses\": [\n                                \"10.2.2.201\",\n                                \"10.2.2.202\"\n                            ]\n                        }\n                    ]\n                },\n                \"{{tenant_name}}_mon\": {\n                    \"class\": \"Monitor\",\n                    \"monitorType\": \"tcp\",\n                    \"targetPort\": 22,\n                    \"send\": \"\",\n                    \"receive\": \"\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTP App",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}_HTTP\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} HTTP Service\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"http\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTP\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"pool\": \"web_pool\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\",\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTP App w/ priorityGroup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n     \"class\": \"AS3\",\n     \"action\": \"deploy\",\n     \"targetHost\": \"{{big_ip_mgmt}}\",\n     \"targetUsername\": \"admin\",\n     \"targetPassphrase\": \"admin\",\n     \"persist\": true,\n     \"declaration\": {\n         \"class\": \"ADC\",\n         \"schemaVersion\": \"3.9.0\",\n         \"id\": \"{{tenant_name}}_HTTP_pg\",\n         \"label\": \"{{tenant_name}}\",\n         \"remark\": \"{{tenant_name}} HTTP Service\",\n         \"{{tenant_name}}\": {\n             \"class\": \"Tenant\",\n             \"{{service_name}}\": {\n                 \"class\": \"Application\",\n                 \"template\": \"http\",\n                 \"serviceMain\": {\n                     \"class\": \"Service_HTTP\",\n                     \"virtualAddresses\": [\n                         \"10.0.1.100\"\n                     ],\n                     \"pool\": \"web_pool\"\n                 },\n                 \"web_pool\": {\n                     \"class\": \"Pool\",\n                     \"monitors\": [\n                         \"http\"\n                     ],\n                     \"members\": [\n                         {\n                             \"servicePort\": 80,\n                             \"serverAddresses\": [\n                                 \"10.2.2.101\"\n                             ],\n                             \"priorityGroup\": 10\n                         },\n                         {\n                             \"servicePort\": 80,\n                             \"serverAddresses\": [\n                                 \"10.2.2.102\"\n                             ],\n                             \"priorityGroup\": 20\n                         }\n                     ]\n                 }\n             }\n         }\n     }\n }"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTP Service with URI Steering",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}_HTTP_DG\",\n        \"{{tenant_name}}_HTTP_DG\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}_vs\": {\n                \"class\": \"Application\",\n                \"template\": \"http\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTP\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.101\"\n                    ],\n                    \"snat\": \"auto\",\n                    \"pool\": \"front_end_pool\",\n                    \"policyEndpoint\": \"back_end_l7_policy\"\n                },\n                \"front_end_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\"\n                            ]\n                        }\n                    ]\n                },\n                \"back_end_pool\": {\n                    \"class\": \"Pool\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                },\n                \"back_end_path_data_group\" :{\n                    \"class\": \"Data_Group\",\n                    \"keyDataType\": \"string\",\n                    \"records\": [\n                        {\n                            \"key\":\"/app/\"\n                        },\n                        {\n                            \"key\":\"/catalog/\"\n                        },\n                        {\n                            \"key\":\"/store/\"\n                        }\n                    ]\n                },\n                \"back_end_l7_policy\": {\n                    \"class\": \"Endpoint_Policy\",\n                    \"remark\": \"L7 policy for back_end_pool\",\n                    \"rules\": [\n                        {\n                            \"name\": \"back_end_path\",\n                            \"conditions\": [\n                                {\n                                    \"type\": \"httpUri\",\n                                    \"event\": \"request\",\n                                    \"path\": {\n                                        \"operand\": \"starts-with\",\n                                        \"values\": [\n                                            \"/app/*\",\n                                            \"/catalog/*\",\n                                            \"/store/*\"\n                                        ]\n                                    }\n                                }\n                            ],\n                            \"actions\": [\n                                {\n                                    \"type\": \"forward\",\n                                    \"event\": \"request\",\n                                    \"select\": {\n                                        \"pool\": {\n                                            \"use\": \"back_end_pool\"\n                                        }\n                                    }\n                                }\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTPS App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} HTTPs with predictive-node LB\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"pool\": \"web_pool\",\n                    \"serverTLS\": \"webtls\"\n                },\n                \"web_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"predictive-node\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 80,\n                            \"serverAddresses\": [\n                                \"10.2.2.101\",\n                                \"10.2.2.102\"\n                            ]\n                        }\n                    ]\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"remark\": \"Use a passphrase!\",\n                    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\\n-----END CERTIFICATE-----\",\n                    \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nProc-Type: 4,ENCRYPTED\\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\\n\\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\\n-----END RSA PRIVATE KEY-----\",\n                    \"passphrase\": {\n                        \"ciphertext\": \"ZjVmNQ==\",\n                        \"protected\": \"eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0\"\n                    }\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create HTTPS using SNI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}\",\n        \"label\": \"{{tenant_name}}\",\n        \"remark\": \"{{tenant_name}} match SNI\",\n        \"controls\": {\n            \"class\": \"Controls\",\n            \"logLevel\": \"debug\",\n            \"trace\": true\n        },\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"https\",\n                \"serviceMain\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.1.1.100\"\n                    ],\n                    \"serverTLS\": \"webtls\"\n                },\n                \"webtls\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"matchToSNI\": \"wwww.lab.local\",\n                            \"certificate\": \"webcert\"\n                        }\n                    ]\n                },\n                \"webcert\": {\n                    \"class\": \"Certificate\",\n                    \"remark\": \"Use a passphrase!\",\n                    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\\n-----END CERTIFICATE-----\",\n                    \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nProc-Type: 4,ENCRYPTED\\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\\n\\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\\n-----END RSA PRIVATE KEY-----\",\n                    \"passphrase\": {\n                        \"ciphertext\": \"ZjVmNQ==\",\n                        \"protected\": \"eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0\"\n                    }\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Simple Forward Proxy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.9.0\",\n        \"id\": \"{{tenant_name}}_forward_proxy\",\n        \"label\": \"{{tenant_name}}_forward_proxy\",\n        \"remark\": \"{{tenant_name}} L4 forward prxoy\",\n        \"{{tenant_name}}\": {\n            \"class\": \"Tenant\",\n            \"{{service_name}}\": {\n                \"class\": \"Application\",\n                \"template\": \"l4\",\n                \"serviceMain\": {\n                    \"class\": \"Service_L4\",\n                    \"virtualPort\": 22,\n                    \"virtualAddresses\": [\n                        \"0.0.0.0\"\n                    ],\n                    \"layer4\": \"tcp\",\n                    \"profileL4\": {\n                        \"use\": \"{{tenant_name}}_fastL4_tcp\"\n                    },\n                    \"snat\": {\n                        \"bigip\": \"/Common/snat-pool\"\n                    }\n                },\n                \"{{tenant_name}}_fastL4_tcp\": {\n                    \"class\": \"L4_Profile\",\n                    \"idleTimeout\": 300,\n                    \"looseClose\": true,\n                    \"looseInitialization\": true,\n                    \"resetOnTimeout\": false,\n                    \"tcpCloseTimeout\": 30,\n                    \"tcpHandshakeTimeout\": 30\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Multiple Tenants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"declarations\": [\n        {\n            \"{{tenant_name}}_1\": {\n                \"class\": \"Tenant\",\n                \"{{service_name}}\": {\n                    \"class\": \"Application\",\n                    \"template\": \"http\",\n                    \"serviceMain\": {\n                        \"class\": \"Service_HTTP\",\n                        \"virtualAddresses\": [\n                            \"10.1.1.101\"\n                        ],\n                        \"pool\": \"web_pool_1\"\n                    },\n                    \"web_pool_1\": {\n                        \"class\": \"Pool\",\n                        \"monitors\": [\n                            \"http\"\n                        ],\n                        \"members\": [\n                            {\n                                \"servicePort\": 80,\n                                \"serverAddresses\": [\n                                    \"10.2.2.101\",\n                                    \"10.2.2.102\"\n                                ]\n                            }\n                        ]\n                    }\n                }\n            },\n            \"class\": \"ADC\",\n            \"schemaVersion\": \"3.0.0\",\n            \"id\": \"{{tenant_name}}_1\",\n            \"updateMode\": \"selective\",\n            \"controls\": {\n                \"trace\": true,\n                \"logLevel\": \"debug\"\n            }\n        },\n        {\n            \"{{tenant_name}}_2\": {\n                \"class\": \"Tenant\",\n                \"{{service_name}}\": {\n                    \"class\": \"Application\",\n                    \"template\": \"http\",\n                    \"serviceMain\": {\n                        \"class\": \"Service_HTTP\",\n                        \"virtualAddresses\": [\n                            \"10.1.1.102\"\n                        ],\n                        \"pool\": \"web_pool_2\"\n                    },\n                    \"web_pool_2\": {\n                        \"class\": \"Pool\",\n                        \"monitors\": [\n                            \"http\"\n                        ],\n                        \"members\": [\n                            {\n                                \"servicePort\": 80,\n                                \"serverAddresses\": [\n                                    \"10.2.2.201\",\n                                    \"10.2.2.202\"\n                                ]\n                            }\n                        ]\n                    }\n                }\n            },\n            \"class\": \"ADC\",\n            \"schemaVersion\": \"3.9.0\",\n            \"id\": \"{{tenant_name}}_2\",\n            \"updateMode\": \"selective\",\n            \"controls\": {\n                \"trace\": true,\n                \"logLevel\": \"debug\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Event-Driven Service Discovery",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.9.0\",\n    \"targetHost\": \"{{big_ip_mgmt}}\",\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"admin\",\n    \"id\": \"{{tenant_name}}\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"trace\": true,\n        \"logLevel\": \"debug\"\n    },\n    \"{{tenant_name}}\": {\n        \"class\": \"Tenant\",\n        \"{{service_name}}\": {\n            \"class\": \"Application\",\n            \"template\": \"generic\",\n            \"testItem\": {\n                \"class\": \"Pool\",\n                \"members\": [\n                    {\n                        \"servicePort\": 8080,\n                        \"addressDiscovery\": \"static\",\n                        \"serverAddresses\": [\n                            \"10.2.2.101\"\n                        ]\n                    },\n                    {\n                        \"servicePort\": 8080,\n                        \"addressDiscovery\": \"event\"\n                    }\n                ]\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TCP virtual server to ICAP with custom monitor Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"class\": \"AS3\",\n  \"action\": \"deploy\",\n  \"targetHost\": \"{{big_ip_mgmt}}\",\n  \"targetUsername\": \"admin\",\n  \"targetPassphrase\": \"admin\",\n  \"declaration\": {\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.0.0\",\n    \"id\": \"container\",\n    \"label\": \"Sample 3\",\n    \"remark\": \"TCP load-balanced to ICAP with custom monitor\",\n    \"Sample_03\": {\n      \"class\": \"Tenant\",\n      \"A1\": {\n        \"class\": \"Application\",\n        \"template\": \"tcp\",\n        \"serviceMain\": {\n          \"class\": \"Service_TCP\",\n          \"virtualAddresses\": [\n            \"10.0.5.10\"\n          ],\n          \"virtualPort\": 1344,\n          \"pool\": \"svc_pool\"\n        },\n        \"svc_pool\": {\n          \"class\": \"Pool\",\n          \"monitors\": [\n            {\n              \"use\": \"icap_monitor\"\n            }\n          ],\n          \"members\": [\n            {\n              \"servicePort\": 1344,\n              \"serverAddresses\": [\n                \"192.0.5.10\",\n                \"192.0.5.11\"\n              ]\n            }\n          ]\n        },\n        \"icap_monitor\": {\n          \"class\": \"Monitor\",\n          \"monitorType\": \"tcp\",\n          \"send\": \"OPTIONS icap://icap.example.net/ ICAP/1.0\\r\\nUser-Agent: f5-ADC\\r\\n\\r\\n\",\n          \"receive\": \"ICAP/1.0 200 OK\",\n          \"adaptive\": false\n        }\n      }\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{big_iq_mgmt}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{big_iq_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Discovered Endpoints",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "450b43ad-b914-4d93-ae0d-af0adee2977a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/appsvcs-discovery/task/~TEST_Pool~Application~testItem/nodes",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs-discovery",
+								"task",
+								"~TEST_Pool~Application~testItem",
+								"nodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Container",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{as3_container}}/mgmt/shared/appsvcs/info",
+							"protocol": "https",
+							"host": [
+								"{{as3_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4 - TS - Graphite",
+			"item": [
+				{
+					"name": "Test telemetry streaming",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/telemetry/info",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"telemetry",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Statsd base configuration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n     \"class\": \"Telemetry\",\n     \"controls\": {\n         \"class\": \"Controls\",\n         \"logLevel\": \"info\"\n     },\n     \"My_Poller\": {\n         \"class\": \"Telemetry_System_Poller\",\n         \"interval\": 60\n     },\n     \"My_Consumer\": {\n         \"class\": \"Telemetry_Consumer\",\n         \"type\": \"Statsd\",\n         \"host\": \"192.168.1.242\",\n         \"protocol\": \"udp\",\n         \"port\": \"8125\"\n     }\n }"
+						},
+						"url": {
+							"raw": "https://{{big_ip_mgmt}}/mgmt/shared/telemetry/declare",
+							"protocol": "https",
+							"host": [
+								"{{big_ip_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"telemetry",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a4bbf870-de57-43bb-9c53-d8c4d112ed63",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5c0e0baa-109b-4b57-a988-29d25c75b135",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5240b4e1-3ded-4b78-a621-5f3b85c1161a",
+			"key": "LTM1_MGMT",
+			"value": "10.1.1.8",
+			"type": "string"
+		},
+		{
+			"id": "fece6e12-007d-4721-835e-30a822181800",
+			"key": "LTM2_MGMT",
+			"value": "10.1.1.9",
+			"type": "string"
+		},
+		{
+			"id": "ddd87949-5db9-4259-8fd9-99fb814d3525",
+			"key": "GTM_MGMT",
+			"value": "10.1.1.5",
+			"type": "string"
+		},
+		{
+			"id": "512736c5-e1cc-4e3c-a6ce-335fabee4f35",
+			"key": "BIGIQ_MGMT",
+			"value": "10.1.1.6",
+			"type": "string"
+		},
+		{
+			"id": "f893dc46-eff9-43a2-8ad6-a2c2ef8507f8",
+			"key": "LTM1_REGKEY",
+			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
+			"type": "string"
+		},
+		{
+			"id": "5c7f6675-c202-4ba8-9282-ba05727fbf77",
+			"key": "LTM2_REGKEY",
+			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
+			"type": "string"
+		},
+		{
+			"id": "0f9429c7-05d9-4618-8954-89ab46835f3b",
+			"key": "GTM_REGKEY",
+			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
+			"type": "string"
+		},
+		{
+			"id": "1ff928ec-605c-45e1-b610-250323c26238",
+			"key": "as3_container",
+			"value": "10.1.1.6:8000",
+			"type": "string"
+		},
+		{
+			"id": "07ed119e-c406-4508-8d7a-9cff72623d2d",
+			"key": "do_container",
+			"value": "10.1.1.6:8001",
+			"type": "string"
+		},
+		{
+			"id": "2b996427-d674-4a3b-9312-9a3012daaeb6",
+			"key": "tenant_name",
+			"value": "MyTenant",
+			"type": "string"
+		},
+		{
+			"id": "80cc847e-f526-40a2-9db4-ebb18d64e5d9",
+			"key": "service_name",
+			"value": "MyService",
+			"type": "string"
+		},
+		{
+			"id": "2fcc2821-82de-4d19-8a40-3aa4732ab498",
+			"key": "app_name",
+			"value": "MyApp",
+			"type": "string"
+		}
+	]
+}
