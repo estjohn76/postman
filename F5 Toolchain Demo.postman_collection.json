@@ -572,12 +572,6 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"type": "text",
-								"value": "{{TOKEN}}",
-								"disabled": true
 							}
 						],
 						"body": {
@@ -609,12 +603,6 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"type": "text",
-								"value": "{{TOKEN}}",
-								"disabled": true
 							}
 						],
 						"body": {
@@ -646,12 +634,6 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}",
-								"type": "text",
-								"disabled": true
 							}
 						],
 						"body": {
@@ -2099,10 +2081,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2191,10 +2169,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2225,10 +2199,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2271,10 +2241,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2305,10 +2271,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2351,10 +2313,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2397,10 +2355,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2443,10 +2397,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2489,10 +2439,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2535,10 +2481,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
@@ -2781,73 +2723,73 @@
 	],
 	"variable": [
 		{
-			"id": "6fd6524a-a191-4376-821c-1f23cdde4972",
+			"id": "39532fe5-7c4e-4352-b1b4-71ad0041de3c",
 			"key": "LTM1_MGMT",
 			"value": "10.1.1.8",
 			"type": "string"
 		},
 		{
-			"id": "6da110e9-a3bd-41e1-b170-74f9770b82f9",
+			"id": "9f795b33-4d70-4152-8903-029b9522c29d",
 			"key": "LTM2_MGMT",
 			"value": "10.1.1.9",
 			"type": "string"
 		},
 		{
-			"id": "b9b6632d-c191-4273-9ca9-47643eb0384b",
+			"id": "a2fe708d-cd2b-422d-80b2-ed76b8bbcedd",
 			"key": "GTM_MGMT",
 			"value": "10.1.1.5",
 			"type": "string"
 		},
 		{
-			"id": "bb59aba2-73ff-40fe-9266-5dafd71ae42c",
+			"id": "d1a2f265-22be-4fb3-b6a5-3919cece26ee",
 			"key": "BIGIQ_MGMT",
 			"value": "10.1.1.6",
 			"type": "string"
 		},
 		{
-			"id": "24c17c53-706d-468b-8ebd-dd6a5e08f71b",
+			"id": "b2e3df49-2afd-4f2c-9b36-f3bd615cdc6f",
 			"key": "LTM1_REGKEY",
 			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
 			"type": "string"
 		},
 		{
-			"id": "f893efaa-5452-4ab9-983f-338a32a03fde",
+			"id": "6ffe9e3d-b17e-4dcc-bf2d-f3dff128c94e",
 			"key": "LTM2_REGKEY",
 			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
 			"type": "string"
 		},
 		{
-			"id": "ac2ff1aa-b2dc-49c8-bd08-e7e18d50b5ab",
+			"id": "19aad135-ef90-4c68-bce5-f18585cd5e3a",
 			"key": "GTM_REGKEY",
 			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
 			"type": "string"
 		},
 		{
-			"id": "21e2511d-aa0e-4126-af90-e7a36d629e94",
+			"id": "98242e4c-0308-4c66-bf2b-f6d5cb4c5af6",
 			"key": "as3_container",
 			"value": "10.1.1.10:8443",
 			"type": "string"
 		},
 		{
-			"id": "86011f64-a7b1-4347-9de2-1840d3e09c06",
+			"id": "463caea3-e8ee-4aae-817c-cb775d54c334",
 			"key": "do_container",
 			"value": "10.1.1.10:8444",
 			"type": "string"
 		},
 		{
-			"id": "1608064f-0140-46b1-8a05-4ee4ddedae9e",
+			"id": "29da4afd-0d89-4cf8-964c-0bbd2800f27f",
 			"key": "tenant_name",
 			"value": "MyTenant",
 			"type": "string"
 		},
 		{
-			"id": "0cfea119-ca5c-4478-a461-a5ceb2ea5505",
+			"id": "9e5a7175-d61c-4ce1-b506-d167f5e25c1c",
 			"key": "service_name",
 			"value": "MyService",
 			"type": "string"
 		},
 		{
-			"id": "0506f50f-e0ba-425f-9299-620d015ff1d9",
+			"id": "11acf67f-ac74-448e-bd54-cdb71e0e8487",
 			"key": "app_name",
 			"value": "MyApp",
 			"type": "string"
