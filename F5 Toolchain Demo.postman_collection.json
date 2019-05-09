@@ -654,6 +654,68 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Provision WAF and AFM - LTM1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"DO\",\n    \"targetHost\": \"{{LTM1_MGMT}}\",\n    \"targetPort\": 443,\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"purple123\",\n    \"declaration\": {\n    \"class\": \"Device\",\n    \"schemaVersion\": \"1.0.0\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\",\n            \"afm\": \"nominal\",\n            \"asm\": \"nominal\"\n        }\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{do_container}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{do_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Provision WAF and AFM - LTM2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"DO\",\n    \"targetHost\": \"{{LTM2_MGMT}}\",\n    \"targetPort\": 443,\n    \"targetUsername\": \"admin\",\n    \"targetPassphrase\": \"purple123\",\n    \"declaration\": {\n    \"class\": \"Device\",\n    \"schemaVersion\": \"1.0.0\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\",\n            \"afm\": \"nominal\",\n            \"asm\": \"nominal\"\n        }\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{do_container}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{do_container}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -2723,73 +2785,73 @@
 	],
 	"variable": [
 		{
-			"id": "5e42647b-9d58-40f0-94b7-52ad6a02638d",
+			"id": "160f2bf7-2a06-4fa0-884f-5b11328471dd",
 			"key": "LTM1_MGMT",
 			"value": "10.1.1.8",
 			"type": "string"
 		},
 		{
-			"id": "8bcfb44a-62f3-4c2f-868c-ae5941e9220a",
+			"id": "591910d2-d79b-4a22-b3b1-4d31280e08d3",
 			"key": "LTM2_MGMT",
 			"value": "10.1.1.9",
 			"type": "string"
 		},
 		{
-			"id": "a90f3380-6462-4fe5-ba45-f3b952d6eff2",
+			"id": "b9be852c-fa5e-4052-9e6a-9a91b58c3fb2",
 			"key": "GTM_MGMT",
 			"value": "10.1.1.5",
 			"type": "string"
 		},
 		{
-			"id": "2b00c887-4aae-4199-aeb6-4e3a3ae317d9",
+			"id": "6eaa1959-1d2c-4b57-a22a-f6a0029e678c",
 			"key": "BIGIQ_MGMT",
 			"value": "10.1.1.6",
 			"type": "string"
 		},
 		{
-			"id": "91d4eaf9-f6b4-415f-b0ee-e4e35811e704",
+			"id": "872a2d9a-cbc6-4723-ad48-fe2f09559b39",
 			"key": "LTM1_REGKEY",
 			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
 			"type": "string"
 		},
 		{
-			"id": "99582641-0554-4651-98c5-b6b8a12b3d45",
+			"id": "781f5943-1f49-4b9d-af55-5fc3862a2acc",
 			"key": "LTM2_REGKEY",
 			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
 			"type": "string"
 		},
 		{
-			"id": "9cbc904e-8318-4634-b867-c55adfb4828d",
+			"id": "828fb5b6-ad90-4804-8783-fdb8230afcff",
 			"key": "GTM_REGKEY",
 			"value": "AAAAA-BBBBB-CCCCC-DDDDD-EEEEE",
 			"type": "string"
 		},
 		{
-			"id": "452bc020-1175-4c6a-ac8c-b25bdf948427",
+			"id": "850efb48-8d5f-41fb-9ae5-4a72977a643e",
 			"key": "as3_container",
 			"value": "10.1.1.10:8443",
 			"type": "string"
 		},
 		{
-			"id": "057d4b64-1c58-4cce-bec9-7ecbc9aa6246",
+			"id": "0b6cfbb1-b3d8-43e8-98ae-45a38d8d81b4",
 			"key": "do_container",
 			"value": "10.1.1.10:8444",
 			"type": "string"
 		},
 		{
-			"id": "93104b00-8d85-4868-93b8-b72abbdf0e63",
+			"id": "a7a4f783-e290-4170-8303-7a4d16d00e13",
 			"key": "tenant_name",
 			"value": "MyTenant",
 			"type": "string"
 		},
 		{
-			"id": "5be25980-9e35-405f-a40d-71e91b70a2c0",
+			"id": "66cac64a-ba97-4046-806a-4cbdbecf8e9f",
 			"key": "service_name",
 			"value": "MyService",
 			"type": "string"
 		},
 		{
-			"id": "dcb21768-c064-4ded-a256-6773a8ba31a4",
+			"id": "d03b949a-fc02-4ba8-8408-aaeb6b31b5bb",
 			"key": "app_name",
 			"value": "MyApp",
 			"type": "string"
